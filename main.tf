@@ -62,16 +62,20 @@ resource "aws_appstream_stack" "this" {
   name         = join("-", [var.name, "stack"])
   display_name = join("-", [var.name, "stack"])
   description  = join("-", [var.name, "stack"])
-  access_endpoints {
-    endpoint_type = "STREAMING"
+  dynamic "access_endpoints" {
+    for_each = var.enable_vpce ? [] : [1]
+    content {
+      endpoint_type = "INTERNET"
+    }
   }
-  #dynamic "access_endpoints" {
-   # for_each = var.enable_vpce ? [1] : []
-    #content {
-     # endpoint_type = var.enable_vpce ? "STREAMING" : "INTERNET"
-      #vpce_id       = var.enable_vpce ? aws_vpc_endpoint.appstream_vpce[0].id : null
-    #}
-  #}
+
+  dynamic "access_endpoints_vpce" {
+    for_each = var.enable_vpce ? [1] : []
+    content {
+      endpoint_type = "STREAMING"
+      vpce_id       = aws_vpc_endpoint.appstream_vpce[0].id
+    }
+  }
 
  
 
