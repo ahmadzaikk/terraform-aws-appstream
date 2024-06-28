@@ -46,21 +46,28 @@ resource "aws_iam_role_policy_attachment" "appstream_role_attachment" {
 
 
 
+# Conditionally Create VPC Endpoint
 resource "aws_vpc_endpoint" "appstream_vpce" {
-  vpc_id             = var.vpc_id
-  service_name       = "com.amazonaws.us-west-2.appstream.streaming"
-  subnet_ids         = var.subnet_ids
-  security_group_ids = [module.sg.id]
-  vpc_endpoint_type  = "Interface"
+  count             = var.enable_vpce ? 1 : 0
+  vpc_id            = aws_vpc.appstream_vpc.id
+  service_name      = "com.amazonaws.${var.region}.appstream.streaming"
+  vpc_endpoint_type = "Interface"
+  subnet_ids        = aws_subnet.appstream_subnet[*].id
+  security_group_ids = [aws_security_group.appstream_sg.id]
+
   tags = var.tags
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_appstream_stack" "this" {
   name         = join("-", [var.name, "stack"])
   display_name = join("-", [var.name, "stack"])
   description  = join("-", [var.name, "stack"])
-  dynamic "access_endpoints" {
-    for_each = var.enable_vpce ? [aws_vpc_endpoint.appstream_vpce.id] : []
+   dynamic "access_endpoints" {
+    for_each = var.enable_vpce ? [aws_vpc_endpoint.appstream_vpce[0].id] : []
     content {
       endpoint_type = "STREAMING"
       vpce_id       = access_endpoints.value
