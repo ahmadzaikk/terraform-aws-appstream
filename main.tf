@@ -63,7 +63,7 @@ resource "aws_appstream_stack" "this" {
   display_name = join("-", [var.name, "stack"])
   description  = join("-", [var.name, "stack"])
   dynamic "user_settings" {
-    for_each = var.appstream_user_settings
+    for_each = var.user_settings
     content {
       action     = user_settings.value.action
       permission = user_settings.value.permission
