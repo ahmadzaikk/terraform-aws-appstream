@@ -73,6 +73,9 @@ resource "aws_appstream_stack" "this" {
       vpce_id       = aws_vpc_endpoint.appstream_vpce[0].id
     }
   }
+  access_endpoints {
+    endpoint_type = "INTERNET"
+  }
 
   application_settings {
     enabled        = true
