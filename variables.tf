@@ -8,7 +8,10 @@ variable "name" {
   default     = ""
   description = "Appstream stack/fleet name"
 }
-
+variable "enable_default_internet_access" {
+  default     = "false"
+  description = "enable Internet access"
+}
 variable "region" {
   default     = "us-west-2"
   description = "aws region"
