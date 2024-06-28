@@ -18,7 +18,7 @@ data "aws_iam_policy_document" "s3" {
   statement {
     principals {
       type        = "AWS"
-      identifiers = [*]
+      identifiers = ["*"]
     }
     actions = ["s3:DeleteBucket"]
     resources = [module.s3.bucket_arn]
