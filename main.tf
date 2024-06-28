@@ -62,6 +62,13 @@ resource "aws_appstream_stack" "this" {
   name         = join("-", [var.name, "stack"])
   display_name = join("-", [var.name, "stack"])
   description  = join("-", [var.name, "stack"])
+  dynamic "user_settings" {
+    for_each = var.appstream_user_settings
+    content {
+      action     = user_settings.value.action
+      permission = user_settings.value.permission
+    }
+  }
  # dynamic "access_endpoints" {
   #  for_each = var.enable_vpce ? [1] : []
    # content {
@@ -69,6 +76,7 @@ resource "aws_appstream_stack" "this" {
      # vpce_id       = aws_vpc_endpoint.appstream_vpce[0].id
     #}
   #}
+
 
  
 
