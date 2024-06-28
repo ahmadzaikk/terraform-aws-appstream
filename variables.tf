@@ -1,3 +1,9 @@
+variable "enable_vpce" {
+  description = "Enable VPC endpoint for streaming"
+  type        = bool
+  default     = true
+}
+
 variable "name" {
   default     = ""
   description = "Appstream stack/fleet name"
