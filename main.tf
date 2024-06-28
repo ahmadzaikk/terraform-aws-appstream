@@ -67,10 +67,17 @@ resource "aws_appstream_stack" "this" {
   display_name = join("-", [var.name, "stack"])
   description  = join("-", [var.name, "stack"])
    dynamic "access_endpoints" {
-    for_each = var.enable_vpce ? [aws_vpc_endpoint.appstream_vpce[0].id] : [internet]
+    for_each = var.enable_vpce ? [aws_vpc_endpoint.appstream_vpce[0].id] : []
     content {
       endpoint_type = "STREAMING"
       vpce_id       = access_endpoints.value
+    }
+  }
+# Add an internet access endpoint if the VPC endpoint is not enabled
+  dynamic "access_endpoints" {
+    for_each = var.enable_vpce ? [] : ["internet"]
+    content {
+      endpoint_type = "INTERNET"
     }
   }
   application_settings {
