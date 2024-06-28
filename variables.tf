@@ -85,5 +85,5 @@ variable "user_settings" {
     action     = string
     permission = string
   }))
-  default = {}
+  default = []
 }
