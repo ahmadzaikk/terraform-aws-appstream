@@ -89,13 +89,14 @@ resource "aws_appstream_stack" "this" {
 
 ### Fleet 
 resource "aws_appstream_fleet" "this" {
-  name                          = join("-", [var.name, "fleet"])
-  instance_type                 = var.instance_type
-  fleet_type                    = var.fleet_type
-  image_name                    = var.image_name
-  max_user_duration_in_seconds  = var.max_user_duration_in_seconds
-  disconnect_timeout_in_seconds = var.disconnect_timeout_in_seconds
-  stream_view                   = var.stream_view
+  name                           = join("-", [var.name, "fleet"])
+  instance_type                  = var.instance_type
+  fleet_type                     = var.fleet_type
+  image_name                     = var.image_name
+  max_user_duration_in_seconds   = var.max_user_duration_in_seconds
+  disconnect_timeout_in_seconds  = var.disconnect_timeout_in_seconds
+  stream_view                    = var.stream_view
+  enable_default_internet_access = var.enable_default_internet_access
   vpc_config {
     subnet_ids         = var.subnet_ids
     security_group_ids = var.security_group_ids
