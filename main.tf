@@ -13,17 +13,7 @@ module "s3" {
   tags = var.tags
   versioning_enabled = "Disabled"
 }
-### s3 Policy
-data "aws_iam_policy_document" "s3" {
-  statement {
-    principals {
-      type        = "AWS"
-      identifiers = ["*"]
-    }
-    actions = ["s3:DeleteBucket"]
-    resources = [module.s3.bucket_arn]
-  }
-}
+
 ### IAM
 resource "aws_iam_role" "appstream_role" {
   name = join("-", [var.name, "appstream_role"])
@@ -98,12 +88,13 @@ resource "aws_appstream_stack" "this" {
     #}
   #}
 
-
- 
-
   application_settings {
     enabled        = true
     settings_group = join("-", [var.name, "setting-group"])
+  }
+  storage_connectors {
+    connector_type = "S3"
+    resource_identifier = join("-", [var.name, "appstream-app-settings","${var.region}","${data.aws_caller_identity.this.account_id}"])
   }
   tags = var.tags
 }
