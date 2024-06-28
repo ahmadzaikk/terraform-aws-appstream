@@ -9,6 +9,11 @@ variable "name" {
   description = "Appstream stack/fleet name"
 }
 
+variable "region" {
+  default     = "us-west-2"
+  description = "aws region"
+}
+
 variable "instance_type" {
   default = "stream.standard.medium"
 
