@@ -1,7 +1,7 @@
 variable "enable_vpce" {
   description = "Enable VPC endpoint for streaming"
   type        = bool
-  default     = true
+  default     = false
 }
 
 variable "name" {
