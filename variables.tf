@@ -80,10 +80,6 @@ variable "tags" {
 }
 
 variable "user_settings" {
-  description = "User settings for AWS AppStream 2.0"
-  type        = list(object({
-    action     = string
-    permission = string
-  }))
-  default = []
+  type    = map(string)
+  default = {}
 }
