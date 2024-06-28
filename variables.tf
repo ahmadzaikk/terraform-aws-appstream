@@ -85,36 +85,5 @@ variable "user_settings" {
     action     = string
     permission = string
   }))
-  default = [
-    {
-      action     = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"
-      permission = "ENABLED"
-    },
-    {
-      action     = "CLIPBOARD_COPY_TO_LOCAL_DEVICE"
-      permission = "ENABLED"
-    },
-    {
-      action     = "FILE_UPLOAD"
-      permission = "ENABLED"
-    },
-    {
-      action     = "FILE_DOWNLOAD"
-      permission = "ENABLED"
-    },
-    {
-      action     = "PRINTING_TO_LOCAL_DEVICE"
-      permission = "ENABLED"
-    },
-   {
-    action     = "DOMAIN_PASSWORD_SIGNIN"
-    permission = "DISABLED"
-    },
-    {
-    action     = "DOMAIN_SMART_CARD_SIGNIN"
-    permission = "DISABLED"
-    }
-
-    // Add more settings as needed
-  ]
+  default = {}
 }
