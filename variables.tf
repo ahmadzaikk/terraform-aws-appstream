@@ -102,7 +102,16 @@ variable "appstream_user_settings" {
     {
       action     = "PRINTING_TO_LOCAL_DEVICE"
       permission = "ENABLED"
+    },
+   {
+    action     = "DOMAIN_PASSWORD_SIGNIN"
+    permission = "DISABLE"
+    },
+    {
+    action     = "DOMAIN_SMART_CARD_SIGNIN"
+    permission = "DISABLED"
     }
+
     // Add more settings as needed
   ]
 }
