@@ -53,7 +53,7 @@ resource "aws_vpc_endpoint" "appstream_vpce" {
   service_name      = "com.amazonaws.${var.region}.appstream.streaming"
   vpc_endpoint_type = "Interface"
   subnet_ids        = var.subnet_ids
-  security_group_ids = [var.security_group_ids]
+  security_group_ids = var.security_group_ids
 
   tags = var.tags
 
