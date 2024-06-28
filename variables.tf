@@ -105,7 +105,7 @@ variable "appstream_user_settings" {
     },
    {
     action     = "DOMAIN_PASSWORD_SIGNIN"
-    permission = "DISABLE"
+    permission = "DISABLED"
     },
     {
     action     = "DOMAIN_SMART_CARD_SIGNIN"
