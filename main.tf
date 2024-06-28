@@ -49,11 +49,11 @@ resource "aws_iam_role_policy_attachment" "appstream_role_attachment" {
 # Conditionally Create VPC Endpoint
 resource "aws_vpc_endpoint" "appstream_vpce" {
   count             = var.enable_vpce ? 1 : 0
-  vpc_id            = aws_vpc.appstream_vpc.id
+  vpc_id            = var.vpc_id
   service_name      = "com.amazonaws.${var.region}.appstream.streaming"
   vpc_endpoint_type = "Interface"
-  subnet_ids        = aws_subnet.appstream_subnet[*].id
-  security_group_ids = [aws_security_group.appstream_sg.id]
+  subnet_ids        = var.subnet_ids
+  security_group_ids = [var.security_group_ids]
 
   tags = var.tags
 
