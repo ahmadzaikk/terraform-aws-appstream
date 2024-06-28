@@ -7,7 +7,7 @@ module "s3" {
   source         = "git::https://git@github.com/ucopacme/terraform-aws-s3-bucket.git//?ref=v0.0.6"
   bucket         = join("-", [var.name, "appstream-app-settings","${var.region}","${data.aws_caller_identity.this.account_id}"])
   enabled        = true
-  policy         = data.aws_iam_policy_document.s3.json
+  #policy         = data.aws_iam_policy_document.s3.json
   policy_enabled = true
   sse_algorithm  = "AES256"
   tags = var.tags
