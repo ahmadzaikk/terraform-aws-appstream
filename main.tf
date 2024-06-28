@@ -74,7 +74,7 @@ resource "aws_appstream_stack" "this" {
     }
   }
 
-  dynamic "access_endpoints_internet" {
+  dynamic "access_endpoints" {
     for_each = var.enable_vpce ? [] : [1]
     content {
       endpoint_type = "STREAMING"
