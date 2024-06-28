@@ -69,8 +69,8 @@ resource "aws_appstream_stack" "this" {
    dynamic "access_endpoints" {
     for_each = var.enable_vpce ? [1] : []
     content {
-      endpoint_type = "INTERNET"
-      #vpce_id       = aws_vpc_endpoint.appstream_vpce[0].id
+      endpoint_type = "STREAMING"
+      vpce_id       = aws_vpc_endpoint.appstream_vpce[0].id
     }
   }
  
