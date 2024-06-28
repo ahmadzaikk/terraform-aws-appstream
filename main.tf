@@ -73,9 +73,7 @@ resource "aws_appstream_stack" "this" {
       vpce_id       = access_endpoints.value
     }
   }
-access_endpoints {
-    endpoint_type = "INTERNET"
-  }
+
   application_settings {
     enabled        = true
     settings_group = join("-", [var.name, "setting-group"])
