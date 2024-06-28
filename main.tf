@@ -67,7 +67,7 @@ resource "aws_appstream_stack" "this" {
   display_name = join("-", [var.name, "stack"])
   description  = join("-", [var.name, "stack"])
    dynamic "access_endpoints" {
-    for_each = var.enable_vpce ? [aws_vpc_endpoint.appstream_vpce[0].id] : []
+    for_each = var.enable_vpce ? [aws_vpc_endpoint.appstream_vpce[0].id] : [internet]
     content {
       endpoint_type = "STREAMING"
       vpce_id       = access_endpoints.value
