@@ -56,10 +56,6 @@ resource "aws_vpc_endpoint" "appstream_vpce" {
   security_group_ids = var.security_group_ids
 
   tags = var.tags
-
-  lifecycle {
-    create_before_destroy = true
-  }
 }
 
 resource "aws_appstream_stack" "this" {
