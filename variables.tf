@@ -75,3 +75,34 @@ variable "tags" {
   description = "A map of tags to add to all resources"
   type        = map(string)
 }
+
+variable "appstream_user_settings" {
+  description = "User settings for AWS AppStream 2.0"
+  type        = list(object({
+    action     = string
+    permission = string
+  }))
+  default = [
+    {
+      action     = "CLIPBOARD_COPY_FROM_LOCAL_DEVICE"
+      permission = "ENABLED"
+    },
+    {
+      action     = "CLIPBOARD_COPY_TO_LOCAL_DEVICE"
+      permission = "ENABLED"
+    },
+    {
+      action     = "FILE_UPLOAD"
+      permission = "ENABLED"
+    },
+    {
+      action     = "FILE_DOWNLOAD"
+      permission = "ENABLED"
+    },
+    {
+      action     = "PRINTING_TO_LOCAL_DEVICE"
+      permission = "ENABLED"
+    }
+    // Add more settings as needed
+  ]
+}
