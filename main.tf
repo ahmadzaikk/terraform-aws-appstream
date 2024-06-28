@@ -1,18 +1,6 @@
 provider "aws" {
   region = "us-west-2"
 }
-data "aws_caller_identity" "this" {}
-### S3
-module "s3" {
-  source         = "git::https://git@github.com/ucopacme/terraform-aws-s3-bucket.git//?ref=v0.0.6"
-  bucket         = join("-", [var.name, "appstream-app-settings","${var.region}","${data.aws_caller_identity.this.account_id}"])
-  enabled        = true
-  #policy         = data.aws_iam_policy_document.s3.json
-  policy_enabled = true
-  sse_algorithm  = "AES256"
-  tags = var.tags
-  versioning_enabled = "Disabled"
-}
 
 ### IAM
 resource "aws_iam_role" "appstream_role" {
@@ -44,7 +32,7 @@ resource "aws_iam_policy" "appstream_policy" {
           "s3:GetObject"
         ],
         Effect = "Allow",
-        Resource = [module.s3.bucket_arn, "${module.s3.bucket_arn}/*"]
+        Resource = ["*"]
       }
     ]
   })
@@ -80,21 +68,17 @@ resource "aws_appstream_stack" "this" {
       permission = user_settings.value.permission
     }
   }
- # dynamic "access_endpoints" {
-  #  for_each = var.enable_vpce ? [1] : []
-   # content {
-    #  endpoint_type = "STREAMING"
-     # vpce_id       = aws_vpc_endpoint.appstream_vpce[0].id
-    #}
-  #}
+  dynamic "access_endpoints" {
+    for_each = var.enable_vpce ? [1] : []
+    content {
+      endpoint_type = "STREAMING"
+      vpce_id       = aws_vpc_endpoint.appstream_vpce[0].id
+    }
+  }
 
   application_settings {
     enabled        = true
     settings_group = join("-", [var.name, "setting-group"])
-  }
-  storage_connectors {
-    connector_type = "S3"
-    resource_identifier = join("-", [var.name, "appstream-app-settings","${var.region}","${data.aws_caller_identity.this.account_id}"])
   }
   tags = var.tags
 }
