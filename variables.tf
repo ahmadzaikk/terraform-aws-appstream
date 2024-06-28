@@ -76,7 +76,7 @@ variable "tags" {
   type        = map(string)
 }
 
-variable "appstream_user_settings" {
+variable "user_settings" {
   description = "User settings for AWS AppStream 2.0"
   type        = list(object({
     action     = string
