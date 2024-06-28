@@ -75,7 +75,7 @@ resource "aws_appstream_stack" "this" {
   }
 # Add an internet access endpoint if the VPC endpoint is not enabled
   dynamic "access_endpoints" {
-    for_each = var.enable_vpce ? [] : ["STREAMING"]
+    for_each = var.enable_vpce ? [] : [INTERNET]
     content {
       endpoint_type = "INTERNET"
     }
