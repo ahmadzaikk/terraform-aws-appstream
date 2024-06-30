@@ -102,7 +102,7 @@ resource "aws_appstream_fleet" "appstream_fleet" {
   iam_role_arn = aws_iam_role.appstream_role.arn
 
   compute_capacity {
-    desired_instances = each.value.desired_instances
+    desired_instances = var.desired_instances
   }
   tags = var.tags
 }
