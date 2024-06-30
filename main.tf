@@ -101,6 +101,8 @@ resource "aws_appstream_fleet" "this" {
 
   compute_capacity {
     desired_instances = var.desired_instances
+    min_capacity      = var.min_capacity  # Set the minimum fleet size
+    max_capacity      = var.max_capacity  # Set the maximum fleet size
   }
   tags = var.tags
 }
