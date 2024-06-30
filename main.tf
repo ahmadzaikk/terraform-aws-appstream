@@ -85,11 +85,11 @@ resource "aws_appstream_stack" "this" {
 
 ### Fleet 
 resource "aws_appstream_fleet" "appstream_fleet" {
-  for_each                       = each.key
-  name                           = join("-", [var.name, "fleet"])
+  for_each                       = var.fleets
+  name                           = each.key
   instance_type                  = each.value.instance_type
-  fleet_type                     = var.fleet_type
-  image_name                     = each.value.image_name
+  fleet_type                     = each.value.fleet_type
+  image_name                     = var.image_name
   max_user_duration_in_seconds   = var.max_user_duration_in_seconds
   disconnect_timeout_in_seconds  = var.disconnect_timeout_in_seconds
   #min_capacity      = var.min_capacity  # Set the minimum fleet size
@@ -103,7 +103,7 @@ resource "aws_appstream_fleet" "appstream_fleet" {
   iam_role_arn = aws_iam_role.appstream_role.arn
 
   compute_capacity {
-    desired_instances = var.desired_instances
+    desired_instances = each.value.desired_instances
   }
   tags = var.tags
 }
