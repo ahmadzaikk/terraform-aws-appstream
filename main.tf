@@ -112,5 +112,5 @@ resource "aws_appstream_fleet_stack_association" "association" {
   for_each  = aws_appstream_fleet.appstream_fleet
 
   fleet_name = each.key
-  stack_name = aws_appstream_stack.appstream_stack.name
+  stack_name = aws_appstream_stack.this.name
 }
