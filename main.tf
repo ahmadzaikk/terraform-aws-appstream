@@ -84,7 +84,7 @@ resource "aws_appstream_stack" "this" {
 }
 
 ### Fleet 
-resource "aws_appstream_fleet" "appstream_fleet" {
+resource "aws_appstream_fleet" "this" {
   name                           = var.name
   instance_type                  = var.instance_type
   fleet_type                     = var.fleet_type
@@ -108,6 +108,6 @@ resource "aws_appstream_fleet" "appstream_fleet" {
 }
 
 resource "aws_appstream_fleet_stack_association" "association" {
-  fleet_name = aws_appstream_fleet.example_fleet.name
+  fleet_name = aws_appstream_fleet.this.name
   stack_name = aws_appstream_stack.this.name
 }
