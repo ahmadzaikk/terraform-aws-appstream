@@ -41,7 +41,15 @@ variable "max_user_duration_in_seconds" {
 variable "disconnect_timeout_in_seconds" {
   default = 300
   type    = number
+}
 
+variable "min_capacity" {
+  default = 1
+  type    = number
+}
+variable "max_capacity" {
+  default = 5
+  type    = number
 }
 
 variable "stream_view" {
