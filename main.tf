@@ -92,6 +92,7 @@ resource "aws_appstream_fleet" "this" {
   max_user_duration_in_seconds   = var.max_user_duration_in_seconds
   max_sessions_per_instance      =  var. max_sessions_per_instance
   disconnect_timeout_in_seconds  = var.disconnect_timeout_in_seconds
+  idle_disconnect_timeout_in_seconds = var.idle_disconnect_timeout_in_seconds
   #min_capacity      = var.min_capacity  # Set the minimum fleet size
   #max_capacity      = var.max_capacity  # Set the maximum fleet size
   stream_view                    = var.stream_view
