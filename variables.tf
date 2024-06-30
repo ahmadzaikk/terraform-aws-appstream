@@ -10,6 +10,7 @@ variable "fleets" {
     fleet_type          = string
     desired_instances   = number
   }))
+}
 
 variable "name" {
   default     = ""
