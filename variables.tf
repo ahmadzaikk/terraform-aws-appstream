@@ -54,6 +54,16 @@ variable "max_capacity" {
   type    = number
 }
 
+variable "desired_sessions" {
+  default = 0
+  type    = number
+}
+variable " max_sessions_per_instance" {
+  default = 15
+  type    = number
+
+}
+
 variable "stream_view" {
   default = "DESKTOP"
 
