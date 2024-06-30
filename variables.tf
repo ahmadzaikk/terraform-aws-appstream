@@ -7,7 +7,6 @@ variable "enable_vpce" {
 variable "appstream_fleets" {
   description = "Map of fleet configurations."
   type = map(object({
-    Name          = string
     instance_type = string
     image_name    = string
   }))
