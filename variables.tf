@@ -55,7 +55,7 @@ variable "max_capacity" {
 }
 
 variable "desired_sessions" {
-  default = 0
+  default = null
   type    = number
 }
 variable "max_sessions_per_instance" {
