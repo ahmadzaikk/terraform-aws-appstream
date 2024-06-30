@@ -105,6 +105,8 @@ resource "aws_appstream_fleet" "this" {
   compute_capacity {
     desired_instances = var.desired_instances
     desired_sessions  = var.desired_sessions
+    min_size          = 1
+    max_size          = 10
   }
   tags = var.tags
 }
