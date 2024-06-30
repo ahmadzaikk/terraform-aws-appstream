@@ -4,22 +4,16 @@ variable "enable_vpce" {
   default     = false
 }
 
-variable "fleets" {
-  type = map(object({
-    instance_type       = string
-    fleet_type          = string
-    desired_instances   = number
-  }))
-}
-
 variable "name" {
   default     = ""
   description = "Appstream stack/fleet name"
 }
+
 variable "enable_default_internet_access" {
   default     = "false"
   description = "enable Internet access"
 }
+
 variable "region" {
   default     = "us-west-2"
   description = "aws region"
