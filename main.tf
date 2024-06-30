@@ -92,8 +92,8 @@ resource "aws_appstream_fleet" "appstream_fleet" {
   image_name                     = each.value.image_name
   max_user_duration_in_seconds   = var.max_user_duration_in_seconds
   disconnect_timeout_in_seconds  = var.disconnect_timeout_in_seconds
-  min_capacity      = var.min_capacity  # Set the minimum fleet size
-  max_capacity      = var.max_capacity  # Set the maximum fleet size
+  #min_capacity      = var.min_capacity  # Set the minimum fleet size
+  #max_capacity      = var.max_capacity  # Set the maximum fleet size
   stream_view                    = var.stream_view
   enable_default_internet_access = var.enable_default_internet_access
   vpc_config {
