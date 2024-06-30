@@ -59,7 +59,7 @@ variable "desired_sessions" {
   type    = number
 }
 variable "max_sessions_per_instance" {
-  default = 15
+  default = null
   type    = number
 
 }
