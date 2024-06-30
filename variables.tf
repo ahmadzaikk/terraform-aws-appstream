@@ -4,13 +4,12 @@ variable "enable_vpce" {
   default     = false
 }
 
-variable "appstream_fleets" {
-  description = "Map of fleet configurations."
+variable "fleets" {
   type = map(object({
-    instance_type = string
-    image_name    = string
+    instance_type       = string
+    fleet_type          = string
+    desired_instances   = number
   }))
-}
 
 variable "name" {
   default     = ""
