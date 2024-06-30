@@ -49,6 +49,12 @@ variable "min_capacity" {
   default = 1
   type    = number
 }
+
+variable "idle_disconnect_timeout_in_seconds" {
+  default = 600
+  type    = number
+}
+
 variable "max_capacity" {
   default = 5
   type    = number
