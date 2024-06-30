@@ -85,10 +85,9 @@ resource "aws_appstream_stack" "this" {
 
 ### Fleet 
 resource "aws_appstream_fleet" "appstream_fleet" {
-  for_each                       = var.fleets
-  name                           = each.key
-  instance_type                  = each.value.instance_type
-  fleet_type                     = each.value.fleet_type
+  name                           = var.name
+  instance_type                  = var.instance_type
+  fleet_type                     = var.fleet_type
   image_name                     = var.image_name
   max_user_duration_in_seconds   = var.max_user_duration_in_seconds
   disconnect_timeout_in_seconds  = var.disconnect_timeout_in_seconds
@@ -109,8 +108,6 @@ resource "aws_appstream_fleet" "appstream_fleet" {
 }
 
 resource "aws_appstream_fleet_stack_association" "association" {
-  for_each  = aws_appstream_fleet.appstream_fleet
-
-  fleet_name = each.key
+  fleet_name = aws_appstream_fleet.appstream_fleet
   stack_name = aws_appstream_stack.this.name
 }
