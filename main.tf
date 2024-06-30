@@ -84,11 +84,12 @@ resource "aws_appstream_stack" "this" {
 }
 
 ### Fleet 
-resource "aws_appstream_fleet" "this" {
+resource "aws_appstream_fleet" "appstream_fleet" {
+  for_each                       = each.key
   name                           = join("-", [var.name, "fleet"])
-  instance_type                  = var.instance_type
+  instance_type                  = each.value.instance_type
   fleet_type                     = var.fleet_type
-  image_name                     = var.image_name
+  image_name                     = each.value.image_name
   max_user_duration_in_seconds   = var.max_user_duration_in_seconds
   disconnect_timeout_in_seconds  = var.disconnect_timeout_in_seconds
   stream_view                    = var.stream_view
@@ -107,8 +108,9 @@ resource "aws_appstream_fleet" "this" {
   tags = var.tags
 }
 
-resource "aws_appstream_fleet_stack_association" "this" {
-  fleet_name = aws_appstream_fleet.this.name
-  stack_name = aws_appstream_stack.this.name
-}
+resource "aws_appstream_fleet_stack_association" "association" {
+  for_each  = aws_appstream_fleet.appstream_fleet
 
+  fleet_name = each.key
+  stack_name = aws_appstream_stack.appstream_stack.name
+}
