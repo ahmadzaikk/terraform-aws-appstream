@@ -50,4 +50,7 @@ No modules.
 
 ## Outputs
 
-No outputs.
+| Name | Description |
+|------|-------------|
+| <a name="output_fleet_name"></a> [fleet\_name](#output\_fleet\_name) | The name of the AppStream 2.0 fleet |
+| <a name="output_stack_name"></a> [stack\_name](#output\_stack\_name) | The name of the AppStream 2.0 stack |
