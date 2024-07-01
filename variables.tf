@@ -21,80 +21,85 @@ variable "region" {
 
 variable "instance_type" {
   default = "stream.standard.medium"
+  description = "Instance Type"
 
 }
 
 variable "fleet_type" {
   default = "ON_DEMAND"
+  description = "Fleet Type ON-DEMOND OR ALWAYS-ON"
 
 }
 
 variable "image_name" {
   default = "AppStream-WinServer2016-06-17-2024"
+  description = "Image Name"
 
 }
 
 variable "max_user_duration_in_seconds" {
   default = 600
   type    = number
+   description = "Max user Duration"
 
 }
 
 variable "disconnect_timeout_in_seconds" {
   default = 300
   type    = number
+  description = "Disconnect TimeOut"
 }
 
-variable "min_capacity" {
-  default = 1
-  type    = number
-}
 
 variable "idle_disconnect_timeout_in_seconds" {
   default = 600
   type    = number
+  description = "Idle Timeout"
 }
 
-variable "max_capacity" {
-  default = 5
-  type    = number
-}
 
 variable "desired_sessions" {
   default = null
   type    = number
+  description = "Desired Session"
 }
 variable "max_sessions_per_instance" {
   default = null
   type    = number
+  description = "Max Sessions per instance"
 
 }
 
 variable "stream_view" {
   default = "DESKTOP"
+  description = "Stream View DESKTOP or APPS"
 
 }
 
 variable "subnet_ids" {
   default = []
   type    = list(string)
+  description = "List of Subnets"
 
 }
 
 variable "security_group_ids" {
   default = []
   type = list(string)
+  description = "Security Group ID"
   
 }
 
 variable "vpc_id" {
   default = ""
   type = string
+  description = "VPC ID"
 }
 
 variable "desired_instances" {
   default = 1
   type = number
+  description = "Desired Instance Number"
   
 }
 
