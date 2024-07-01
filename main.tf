@@ -90,7 +90,6 @@ resource "aws_appstream_fleet" "this" {
   fleet_type                     = var.fleet_type
   image_name                     = var.image_name
   max_user_duration_in_seconds   = var.max_user_duration_in_seconds
-  max_sessions_per_instance      =  var. max_sessions_per_instance
   disconnect_timeout_in_seconds  = var.disconnect_timeout_in_seconds
   idle_disconnect_timeout_in_seconds = var.idle_disconnect_timeout_in_seconds
   #min_capacity      = var.min_capacity  # Set the minimum fleet size
@@ -105,7 +104,6 @@ resource "aws_appstream_fleet" "this" {
 
   compute_capacity {
     desired_instances = var.desired_instances
-    desired_sessions  = var.desired_sessions
   }
   tags = var.tags
 }

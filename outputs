@@ -1,1 +1,16 @@
 
+output "appstream_fleet_id" {
+  value = aws_appstream_fleet.this.id
+}
+
+output "appstream_stack_id" {
+  value = aws_appstream_stack.this.id
+}
+
+output "appstream_fleet_arn" {
+  value = aws_appstream_fleet.this.arn
+}
+
+output "appstream_stack_arn" {
+  value = aws_appstream_stack.this.arn
+}
