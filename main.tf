@@ -85,7 +85,7 @@ resource "aws_appstream_stack" "this" {
 
 ### Fleet 
 resource "aws_appstream_fleet" "this" {
-  name                           = var.name
+  name                           = join("-", [var.name, "fleet"])
   instance_type                  = var.instance_type
   fleet_type                     = var.fleet_type
   image_name                     = var.image_name
