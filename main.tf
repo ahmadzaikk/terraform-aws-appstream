@@ -61,6 +61,11 @@ resource "aws_appstream_stack" "this" {
   name         = join("-", [var.name, "stack"])
   display_name = join("-", [var.name, "stack"])
   description  = join("-", [var.name, "stack"])
+  storage_connectors {
+    connector_type = "S3"
+    resource_identifier = "arn:aws:s3:::kk-test-appstream-user"
+  }
+}
   dynamic "user_settings" {
     for_each = var.user_settings
     content {
