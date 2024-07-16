@@ -65,7 +65,7 @@ resource "aws_appstream_stack" "this" {
     connector_type = "S3"
     resource_identifier = "arn:aws:s3:::kk-test-appstream-user"
   }
-}
+
   dynamic "user_settings" {
     for_each = var.user_settings
     content {
