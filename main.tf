@@ -28,6 +28,9 @@ resource "aws_iam_policy" "appstream_policy" {
     Statement = [
       {
         Action = [
+          "s3:PutObject",
+          "s3:GetObject",
+          "s3:DeleteObject",
           "s3:ListBucket",
           "s3:GetObject"
         ],
