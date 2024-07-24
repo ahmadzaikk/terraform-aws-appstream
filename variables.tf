@@ -166,11 +166,5 @@ variable "domain_join_info" {
     directory_name = string
     organizational_unit_distinguished_name = string
   }))
-  default = [
-    {
-      directory_name = ""
-      organizational_unit_distinguished_name = ""
-    },
-    
-  ]
+  
 }
