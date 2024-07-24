@@ -9,6 +9,16 @@ variable "name" {
   description = "Appstream stack/fleet name"
 }
 
+variable "directory_name" {
+  default     = ""
+  description = "directory_name"
+}
+
+variable "organizational_unit_distinguished_name" {
+  default     = ""
+  description = "organizational_unit_distinguished_name"
+}
+
 variable "enable_default_internet_access" {
   default     = "false"
   description = "enable Internet access"
