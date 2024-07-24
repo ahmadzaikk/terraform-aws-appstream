@@ -159,3 +159,18 @@ variable "organizational_unit_distinguished_name" {
   type        = string
   description = "organizational_unit_distinguished_name"
 }
+
+variable "user_settings" {
+  description = "List of user settings for the AppStream stack"
+  type = list(object({
+    directory_name = string
+    organizational_unit_distinguished_name = string
+  }))
+  default = [
+    {
+      directory_name = ""
+      organizational_unit_distinguished_name = ""
+    },
+    
+  ]
+}
