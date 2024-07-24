@@ -149,29 +149,13 @@ variable "user_settings" {
   ]
 }
 
-variable "domain_join_info" {
-  description = "List of user settings for the AppStream stack"
-  type = list(object({
-    directory_name      = string
-    organizational_unit_distinguished_name = string
-  }))
-  default = [
-    {
-      directory_name     = ""
-      organizational_unit_distinguished_name = ""
-    },
-    
-  ]
-}
 
 variable "directory_name" {
-  default     = ""
   type        = string
   description = "directory_name"
 }
 
 variable "organizational_unit_distinguished_name" {
-  default     = ""
   type        = string
   description = "organizational_unit_distinguished_name"
 }
