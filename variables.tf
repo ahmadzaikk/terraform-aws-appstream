@@ -163,3 +163,13 @@ variable "domain_join_info" {
     
   ]
 }
+
+variable "directory_name" {
+  default     = ""
+  description = "directory_name"
+}
+
+variable "organizational_unit_distinguished_name" {
+  default     = ""
+  description = "organizational_unit_distinguished_name"
+}
