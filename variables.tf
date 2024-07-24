@@ -166,10 +166,12 @@ variable "domain_join_info" {
 
 variable "directory_name" {
   default     = ""
+  type        = string
   description = "directory_name"
 }
 
 variable "organizational_unit_distinguished_name" {
   default     = ""
+  type        = string
   description = "organizational_unit_distinguished_name"
 }
