@@ -116,7 +116,7 @@ resource "aws_appstream_fleet" "this" {
     directory_name = var.direcdtory_name
     organizational_unit_distinguished_name = var.organizational_unit_distinguished_name
   }
-}
+
   tags = var.tags
 }
 
