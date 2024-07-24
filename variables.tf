@@ -9,15 +9,6 @@ variable "name" {
   description = "Appstream stack/fleet name"
 }
 
-variable "directory_name" {
-  default     = ""
-  description = "directory_name"
-}
-
-variable "organizational_unit_distinguished_name" {
-  default     = ""
-  description = "organizational_unit_distinguished_name"
-}
 
 variable "enable_default_internet_access" {
   default     = "false"
@@ -155,5 +146,20 @@ variable "user_settings" {
     action     = "DOMAIN_SMART_CARD_SIGNIN"
     permission = "DISABLED"
     }
+  ]
+}
+
+variable "domain_join_info" {
+  description = "List of user settings for the AppStream stack"
+  type = list(object({
+    directory_name      = string
+    organizational_unit_distinguished_name = string
+  }))
+  default = [
+    {
+      directory_name     = ""
+      organizational_unit_distinguished_name = ""
+    },
+    
   ]
 }
