@@ -160,7 +160,7 @@ variable "organizational_unit_distinguished_name" {
   description = "organizational_unit_distinguished_name"
 }
 
-variable "user_settings" {
+variable "domain_join_info" {
   description = "List of user settings for the AppStream stack"
   type = list(object({
     directory_name = string
