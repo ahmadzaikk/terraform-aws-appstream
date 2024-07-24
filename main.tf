@@ -113,7 +113,7 @@ resource "aws_appstream_fleet" "this" {
     desired_instances = var.desired_instances
   }
   domain_join_info {
-    directory_name = var.direcdtory_name
+    directory_name = var.directory_name
     organizational_unit_distinguished_name = var.organizational_unit_distinguished_name
   }
 
